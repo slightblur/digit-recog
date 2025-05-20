@@ -25,7 +25,9 @@ def preprocess_image(img):
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     if len(contours) == 0:
-        return np.zeros((1, 28, 28, 1), dtype=np.float32)
+        empty = np.zeros((28, 28), dtype=np.uint8)
+        cv2.imshow("Preprocessed Digit", cv2.resize(empty, (280, 280), interpolation=cv2.INTER_NEAREST))
+        return empty.astype(np.float32).reshape(1, 28, 28, 1)
 
     c = max(contours, key=cv2.contourArea)
     x, y, w, h = cv2.boundingRect(c)
@@ -36,10 +38,10 @@ def preprocess_image(img):
     # Invert image to match MNIST (white digit on black background)
     inverted = 255 - resized
 
+    # ✅ Show the preprocessed digit clearly before prediction
+    cv2.imshow("Preprocessed Digit", cv2.resize(inverted, (280, 280), interpolation=cv2.INTER_NEAREST))
+    cv2.waitKey(1)  # allow window to refresh
+
     # Normalize
     normalized = inverted.astype(np.float32) / 255.0
-
-    # Debug view
-    cv2.imshow("Preprocessed Digit", cv2.resize(inverted, (280, 280), interpolation=cv2.INTER_NEAREST))
-
     return normalized.reshape(1, 28, 28, 1)
