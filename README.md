@@ -22,7 +22,8 @@ A real-time handwritten digit recognition app using a Convolutional Neural Netwo
 
 - Python 3.8+ installed
 - `uv` installed:  
-  [Install uv →](https://github.com/astral-sh/uv#installation)
+  Run the following command in PowerShell:
+  `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
 
 ---
 
@@ -60,7 +61,7 @@ uv run camera_predict.py
 
 ---
 
-### 5. 🧠 Train the Model on Feedback Data (only once)
+### 5. 🧠 Train the Model on Feedback Data
 
 ```
 uv run train_feedback.py
