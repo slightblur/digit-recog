@@ -23,8 +23,9 @@ A real-time handwritten digit recognition app using a Convolutional Neural Netwo
 - Python 3.8+ installed
 - `uv` installed:  
   Run the following command in PowerShell:
-  `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-
+  ```
+  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+  ```
 ---
 
 ### 2. 📦 Install Dependencies with `uv`
